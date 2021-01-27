@@ -18,7 +18,11 @@ export class BooksService {
   private _observers: EventListener[] = [];
   private _books: Book[] = [];
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
+    this.loadBooks();
+  }
+
+  loadBooks() {
     this.httpClient.
       get('https://jgtbdylysi.execute-api.us-east-1.amazonaws.com/listBooks').
       subscribe( (responseData: any) => this.handleListBooks(responseData) );
@@ -47,10 +51,15 @@ export class BooksService {
   }
 
   addBook(book: Book) {
-    this._books.push( book ) ;
     this.httpClient.
       get(`https://11a7ychc84.execute-api.us-east-1.amazonaws.com/default/addBook?name=${book.name}&author=${book.author}`).
-      subscribe( () => this.notifySubscibers() );
+      subscribe( () => this.loadBooks() );
+  }
+
+  deleteBook(book: Book) {
+    this.httpClient.
+    get(`https://ao5h1jxjq6.execute-api.us-east-1.amazonaws.com/default/deleteBook?name=${book.name}`).
+    subscribe( () => this.loadBooks() );
   }
 
   notifySubscibers() {
