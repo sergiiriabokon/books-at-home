@@ -1,20 +1,32 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+interface Book {
+  name: string;
+  author: string;
+}
+
+interface EventListener {
+  notify(): void;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class BooksService {
-  private _active: any;
-  private _observers: any[] = [];
+  private _active: Book = { name: '', author: '' };
+  private _observers: EventListener[] = [];
+  private _books: Book[] = [];
 
-  private _books = [
-    {author: "Ritchie", name: "C porgamming reference"},
-    {author: "Gamma", name: "Design patterns"},
-    {author: "Grady Booch", name: "Object-oriented analysis and design"}
-  ];
+  constructor(private httpClient: HttpClient) { 
+    this.httpClient.
+      get('https://jgtbdylysi.execute-api.us-east-1.amazonaws.com/listBooks').
+      subscribe( (responseData: any) => this.handleListBooks(responseData) );
+  }
 
-  constructor() { 
-    this._active = this.getBooks()[0];
+  handleListBooks(booksList: Book[]) {
+    this._books = booksList;
+    this._observers.forEach(o => o.notify() );
   }
 
   getBooks() {
@@ -25,17 +37,18 @@ export class BooksService {
     return {...this._active};
   }
 
-  setActiveBook(book: any) {
+  setActiveBook(book: Book) {
     this._active = book;
     this._observers.forEach(o => o.notify() );
   }
 
-  subscribe(observer: any) {
+  subscribe(observer: EventListener) {
     this._observers.push(observer);
   }
 
-  addBook(name: string, author: string) {
-    this._books.push( {name, author} ) ;
+  addBook(book: Book) {
+    this._books.push( book ) ;
     this._observers.forEach(o => o.notify() );
   }
+
 }

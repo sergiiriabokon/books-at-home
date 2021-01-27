@@ -1,4 +1,6 @@
 a {
     text-decoration: underline;
     cursor: pointer;
+    margin-right: 3px;
+    display: inline-block;
 }

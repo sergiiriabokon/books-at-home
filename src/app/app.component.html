@@ -1,9 +1,6 @@
 <h1>books at home</h1>
 
-<app-books-list></app-books-list>
-<app-book-detail></app-book-detail>
-<a (click)="showAddBook = !showAddBook">add book</a>
-
-<app-books-editor *ngIf="showAddBook"></app-books-editor>
+<a routerLink="/add-book" routerLinkActive="active">Add Book</a>
+<a routerLink="/list-books" routerLinkActive="active">List Books</a>
 
 <router-outlet></router-outlet>

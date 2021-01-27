@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BooksService } from '../books.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-editor',
@@ -10,13 +11,13 @@ export class BooksEditorComponent implements OnInit {
   bookName = '';
   bookAuthor = '';
 
-  constructor(private booksService: BooksService) { }
+  constructor(private booksService: BooksService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   submitForm() {
-    console.log('submit clicked');
-    this.booksService.addBook(this.bookName, this.bookAuthor);
+    this.booksService.addBook({name: this.bookName, author: this.bookAuthor});
+    this.router.navigate(['/list-books',{}]);
   }
 }

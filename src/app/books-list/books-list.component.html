@@ -1,7 +1,7 @@
-<p>books-list works!</p>
-
 <ul>
     <li *ngFor="let book of books">
         <a (click)="onBookClicked(book)">{{book.name}}</a> 
     </li>
 </ul>
+
+<app-book-detail></app-book-detail>

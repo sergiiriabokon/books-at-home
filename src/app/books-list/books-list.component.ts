@@ -15,7 +15,6 @@ export class BooksListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.booksService.getBooks());
   }
 
   notify() {
@@ -23,7 +22,6 @@ export class BooksListComponent implements OnInit {
   }
 
   onBookClicked(book: any): void {
-    console.log(book.name + "book is clicked");
     this.booksService.setActiveBook(book);
   }
 
