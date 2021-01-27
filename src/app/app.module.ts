@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BooksEditorComponent } from './books-editor/books-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatInputModule} from '@angular/material/input'; 
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,10 @@ import { BooksEditorComponent } from './books-editor/books-editor.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule //,
+    FormsModule,
+    MatInputModule,
+    MatButtonModule,
+    BrowserAnimationsModule //,
     // ReactiveFormsModule
   ],
   providers: [],

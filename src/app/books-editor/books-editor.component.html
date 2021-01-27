@@ -1,12 +1,16 @@
-<h3>add new book</h3>
+<mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput type="text" [(ngModel)]="bookName" autocomplete="off">
+</mat-form-field>
 
-<label for="book-name">name: </label>
-<input type="text"  name="book-name" [(ngModel)]="bookName">
+<mat-form-field>
+    <mat-label>Author</mat-label>
+    <input matInput type="text" [(ngModel)]="bookAuthor" autocomplete="off">
+</mat-form-field>
 
-<label for="book-author">author: </label>
-<input type="text" name="book-author" [(ngModel)]="bookAuthor">
+<mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput type="text" [(ngModel)]="bookDescription" autocomplete="off">
+</mat-form-field>
 
-<label for="book-description">description: </label>
-<input type="text" name="book-description" [(ngModel)]="bookDescription">
-
-<input type="button" (click)="submitForm()" value="add book">
+<button mat-raised-button color="primary" (click)="submitForm()">add book</button>

@@ -1,3 +1,5 @@
 <h3>{{activeBook.name}}</h3>
 <p>{{activeBook.author}}</p>
 <p>{{activeBook.description}}</p>
+
+<a *ngIf="activeBook.name" mat-button color="warn" (click)="deleteBook()" class="remove">delete</a>

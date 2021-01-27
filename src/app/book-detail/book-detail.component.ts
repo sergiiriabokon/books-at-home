@@ -20,4 +20,9 @@ export class BookDetailComponent implements OnInit {
   notify() {
     this.activeBook = this.booksService.getActiveBook();
   }
+
+  deleteBook() {
+    this.activeBook = {name: ''};
+    this.booksService.deleteBook(this.activeBook);
+  }
 }

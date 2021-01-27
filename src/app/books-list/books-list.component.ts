@@ -25,7 +25,4 @@ export class BooksListComponent implements OnInit {
     this.booksService.setActiveBook(book);
   }
 
-  deleteBook(book: any) {
-    this.booksService.deleteBook(book);
-  }
 }
