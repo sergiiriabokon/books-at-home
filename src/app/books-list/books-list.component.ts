@@ -8,13 +8,18 @@ import { BooksService } from '../books.service';
 })
 export class BooksListComponent implements OnInit {
   books;
-  
+
   constructor(private booksService: BooksService) { 
     this.books = this.booksService.getBooks();
+    this.booksService.subscribe(this);
   }
 
   ngOnInit(): void {
     console.log(this.booksService.getBooks());
+  }
+
+  notify() {
+    this.books = this.booksService.getBooks();
   }
 
   onBookClicked(book: any): void {

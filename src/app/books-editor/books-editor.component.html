@@ -1,0 +1,9 @@
+<p>books-editor works!</p>
+
+<label for="book-name">name: </label>
+<input type="text"  name="book-name" [(ngModel)]="bookName">
+
+<label for="book-author">author: </label>
+<input type="text" name="book-author" [(ngModel)]="bookAuthor">
+
+<input type="button" (click)="submitForm()" value="add book">

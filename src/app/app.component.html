@@ -2,5 +2,8 @@
 
 <app-books-list></app-books-list>
 <app-book-detail></app-book-detail>
+<a (click)="showAddBook = !showAddBook">add book</a>
+
+<app-books-editor *ngIf="showAddBook"></app-books-editor>
 
 <router-outlet></router-outlet>

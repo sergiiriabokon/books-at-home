@@ -1,0 +1,6 @@
+label, input {
+    display: block;
+}
+label,input[type=button] {
+    margin-top: 5px;
+}
