@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 interface Book {
   name: string;
   author: string;
+  description: string;
 }
 
 interface EventListener {
@@ -14,7 +15,7 @@ interface EventListener {
   providedIn: 'root'
 })
 export class BooksService {
-  private _active: Book = { name: '', author: '' };
+  private _active: Book = { name: '', author: '', description: '' };
   private _observers: EventListener[] = [];
   private _books: Book[] = [];
 
@@ -52,7 +53,7 @@ export class BooksService {
 
   addBook(book: Book) {
     this.httpClient.
-      get(`https://11a7ychc84.execute-api.us-east-1.amazonaws.com/default/addBook?name=${book.name}&author=${book.author}`).
+      get(`https://11a7ychc84.execute-api.us-east-1.amazonaws.com/default/addBook?name=${book.name}&author=${book.author}&description=${book.description}`).
       subscribe( () => this.loadBooks() );
   }
 

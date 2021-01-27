@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class BooksEditorComponent implements OnInit {
   bookName = '';
   bookAuthor = '';
+  bookDescription = '';
 
   constructor(private booksService: BooksService, private router: Router) { }
 
@@ -17,7 +18,7 @@ export class BooksEditorComponent implements OnInit {
   }
 
   submitForm() {
-    this.booksService.addBook({name: this.bookName, author: this.bookAuthor});
+    this.booksService.addBook({name: this.bookName, author: this.bookAuthor, description: this.bookDescription});
     this.router.navigate(['/list-books',{}]);
   }
 }

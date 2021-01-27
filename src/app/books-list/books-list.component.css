@@ -13,3 +13,11 @@ a.remove {
 a.remove:hover {
     color: #222;
 }
+
+li {
+    line-height: 1.5em;
+}
+
+ul {list-style: none; margin-left: 0; padding-left: 15px;}
+
+li::before {content: "•"; color: rgb(176, 170, 231); margin-right: 10px;}
