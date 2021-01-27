@@ -26,7 +26,7 @@ export class BooksService {
 
   handleListBooks(booksList: Book[]) {
     this._books = booksList;
-    this._observers.forEach(o => o.notify() );
+    this.notifySubscibers();
   }
 
   getBooks() {
@@ -39,7 +39,7 @@ export class BooksService {
 
   setActiveBook(book: Book) {
     this._active = book;
-    this._observers.forEach(o => o.notify() );
+    this.notifySubscibers();
   }
 
   subscribe(observer: EventListener) {
@@ -48,6 +48,12 @@ export class BooksService {
 
   addBook(book: Book) {
     this._books.push( book ) ;
+    this.httpClient.
+      get(`https://11a7ychc84.execute-api.us-east-1.amazonaws.com/default/addBook?name=${book.name}&author=${book.author}`).
+      subscribe( () => this.notifySubscibers() );
+  }
+
+  notifySubscibers() {
     this._observers.forEach(o => o.notify() );
   }
 
