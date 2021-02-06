@@ -31,7 +31,12 @@ export class BooksService {
 
   handleListBooks(booksList: Book[]) {
     this._books = booksList;
+    this.resetActiveBook();
     this.notifySubscibers();
+  }
+
+  resetActiveBook() {
+    this._active = { name: '', author: '', description: '' };
   }
 
   getBooks() {
@@ -58,9 +63,11 @@ export class BooksService {
   }
 
   deleteBook(book: Book) {
+    
     this.httpClient.
     get(`https://ao5h1jxjq6.execute-api.us-east-1.amazonaws.com/default/deleteBook?name=${book.name}`).
     subscribe( () => this.loadBooks() );
+
   }
 
   notifySubscibers() {

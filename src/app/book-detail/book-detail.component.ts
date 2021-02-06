@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BooksService } from '../books.service';
 
 @Component({
   selector: 'app-book-detail',
   templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css']
+  styleUrls: ['./book-detail.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class BookDetailComponent implements OnInit {
   public activeBook: any;
@@ -22,7 +23,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   deleteBook() {
-    this.activeBook = {name: ''};
     this.booksService.deleteBook(this.activeBook);
+    this.activeBook = {name: ''};
   }
 }

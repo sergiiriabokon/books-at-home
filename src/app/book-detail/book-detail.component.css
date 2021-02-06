@@ -1,9 +1,21 @@
 
 h3 {
     font-weight: normal; 
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 h3, p {
     margin-left: 20px;
+}
+
+a.deletebutton {
+    color: #555;
+    border: none;
+    float: right;
+}
+
+
+a.deletebutton:hover {
+    color: red;
 }
